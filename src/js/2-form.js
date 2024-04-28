@@ -22,11 +22,7 @@ form.addEventListener('input', function(event) {
 form.addEventListener('submit', function(event) {
     event.preventDefault(); // Забороняємо браузеру відправляти форму
     
-// Перевірка на порожні поля перед відправленням
-  if (!emailInput.value.trim() || !messageInput.value.trim()) {
-    alert('Fill please all fields');
-    return; // Перериваємо відправку форми, якщо є порожні поля
-  }
+
     
     const currentState = JSON.parse(localStorage.getItem('feedback-form-state'));
     console.log(currentState); // Виводимо дані в консоль
