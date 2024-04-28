@@ -12,8 +12,8 @@ const storedState = JSON.parse(localStorage.getItem('feedback-form-state'));
  // Відстежуємо введення користувача та зберігаємо дані в сховищі
 form.addEventListener('input', function(event) {
     const currentState = {
-        email: emailInput.value,
-        message: messageInput.value
+        email: emailInput.value.trim(),
+        message: messageInput.value.trim()
     };
     localStorage.setItem('feedback-form-state', JSON.stringify(currentState));
 });
@@ -21,6 +21,13 @@ form.addEventListener('input', function(event) {
 // Подія відправки форми
 form.addEventListener('submit', function(event) {
     event.preventDefault(); // Забороняємо браузеру відправляти форму
+    
+// Перевірка на порожні поля перед відправленням
+  if (!emailInput.value.trim() || !messageInput.value.trim()) {
+    alert('Fill please all fields');
+    return; // Перериваємо відправку форми, якщо є порожні поля
+  }
+    
     const currentState = JSON.parse(localStorage.getItem('feedback-form-state'));
     console.log(currentState); // Виводимо дані в консоль
     localStorage.removeItem('feedback-form-state'); // Очищаємо сховище

@@ -73,15 +73,6 @@ images.forEach(image => {
 
 gallery.innerHTML = pictures;
 
-// заборона завантаження зображення по кліку на нього
-const galleryLinks = document.querySelectorAll(".gallery-link");
-
-galleryLinks.forEach(link => {
-  link.addEventListener('click', function(event) {
-    event.preventDefault();
-  });
-});
-
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
